@@ -370,13 +370,13 @@ if (geofs.animation.values.groundContact == 1) {
   geofs.animation.values.isFlapsWarn = 0;
   return;
 }
-	if (geofs.animation.values.haglFeet <= 500 && geofs.animation.values.gearPosition == 1 && geofs.animation.values.climbrate < 0 && geofs.animation.values.isPullupWarn == 0) {
+	if (geofs.animation.values.haglFeet <= 1000 && geofs.animation.values.gearPosition == 1 && geofs.animation.values.isPullupWarn == 0 && geofs.animation.values.isTerrainWarn == 0 && geofs.camera.currentModeName === "cockpit") {
 		geofs.animation.values.isGearWarn = 1;
 	} else {
 		geofs.animation.values.isGearWarn = 0;
 	}
 
-	if (geofs.animation.values.haglFeet <= 1000 && geofs.animation.values.flapsPosition == 0 && geofs.animation.values.climbrate < 0 && geofs.animation.values.isPullupWarn == 0) {
+	if (geofs.animation.values.haglFeet <= 1000 && geofs.animation.values.gearPosition == 0 && geofs.animation.values.flapsPosition == 0 && geofs.animation.values.isPullupWarn == 0 && geofs.animation.values.isTerrainWarn == 0 && geofs.camera.currentModeName === "cockpit") {
 		geofs.animation.values.isFlapsWarn = 1;
 	} else {
 		geofs.animation.values.isFlapsWarn = 0;
@@ -384,14 +384,14 @@ if (geofs.animation.values.groundContact == 1) {
 }
 
 function testTerrainorAppr() {
-	if (geofs.animation.values.gearPosition == 0) {
-		if (geofs.animation.values.haglFeet <= 1000 && geofs.animation.values.climbrate <= -100 && geofs.animation.values.climbrate >= -5000 && geofs.animation.values.isGearWarn == 0 && geofs.animation.values.isFlapsWarn == 0 && isApprConfig == 0) {
+	if (geofs.animation.values.grounContact == 0) {
+		if (geofs.animation.values.haglFeet <= 1000 && geofs.animation.values.climbrate >= -3000 && geofs.animation.values.groundSpeedKnt >= 150 && isApprConfig == 0 && geofs.camera.currentModeName === "cockpit") {
 			geofs.animation.values.isTerrainWarn = 1;
 		} else {
 			geofs.animation.values.isTerrainWarn = 0;
 		}
 
-		if (geofs.animation.values.haglFeet <= 5000 && geofs.animation.values.climbrate <= -2000 || geofs.animation.values.haglFeet <= 1000 && geofs.animation.values.climbrate <= -5000) {
+		if (geofs.animation.values.haglFeet <= 1000 && geofs.animation.values.climbrate < -3000 && geofs.camera.currentModeName === "cockpit") {
 			geofs.animation.values.isPullupWarn = 1;
 		} else {
 			geofs.animation.values.isPullupWarn = 0;
@@ -402,7 +402,6 @@ function testTerrainorAppr() {
 		return;
 	}
 }
-
 
 function testForApproach(){
   if (geofs.animation.values.isFlapsWarn == 0 && geofs.animation.values.isGearWarn == 0 && geofs.animation.values.climbrate <= -1){
@@ -415,31 +414,31 @@ function testForApproach(){
 
 function doRadioAltCall(){
   if (isApprConfig){
-  if (geofs.animation.values.haglFeet <= 1000 + restingPoint && geofs.animation.values.haglFeet >= 900 + restingPoint){
+  if (geofs.animation.values.haglFeet <= 1000 + restingPoint && geofs.animation.values.haglFeet >= 950 + restingPoint){
     geofs.animation.values.gpws1000 = 1;
   }
   else{
     geofs.animation.values.gpws1000 = 0;
   }
-   if (geofs.animation.values.haglFeet <= 500 + restingPoint && geofs.animation.values.haglFeet >= 400 + restingPoint){
+   if (geofs.animation.values.haglFeet <= 500 + restingPoint && geofs.animation.values.haglFeet >= 450 + restingPoint){
     geofs.animation.values.gpws500 = 1;
   }
   else{
     geofs.animation.values.gpws500 = 0;
   } 
-   if (geofs.animation.values.haglFeet <= 400 + restingPoint && geofs.animation.values.haglFeet >= 300 + restingPoint){
+   if (geofs.animation.values.haglFeet <= 400 + restingPoint && geofs.animation.values.haglFeet >= 350 + restingPoint){
     geofs.animation.values.gpws400 = 1;
   }
   else{
     geofs.animation.values.gpws400 = 0;
   } 
-   if (geofs.animation.values.haglFeet <= 300 + restingPoint && geofs.animation.values.haglFeet >= 200 + restingPoint){
+   if (geofs.animation.values.haglFeet <= 300 + restingPoint && geofs.animation.values.haglFeet >= 250 + restingPoint){
     geofs.animation.values.gpws300 = 1;
   }
   else{
     geofs.animation.values.gpws300 = 0;
   } 
-   if (geofs.animation.values.haglFeet <= 200 + restingPoint && geofs.animation.values.haglFeet >= 100 + restingPoint){
+   if (geofs.animation.values.haglFeet <= 200 + restingPoint && geofs.animation.values.haglFeet >= 150 + restingPoint){
     geofs.animation.values.gpws200 = 1;
   }
   else{
